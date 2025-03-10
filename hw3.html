@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Cycles
+    </title>
+
+</head>
+<body>
+<div>
+    <ul>
+        1.
+        <li>Сумма всех чисел в диапазоне: </li>
+        2.
+        <li>Наибольший общий делитель: </li>
+        3.
+        <li>Все делители числа: </li>
+        4.
+        <li>Количество цифр в введенном числе: </li>
+        5.
+        <li id="positives">Количество положительных чисел: </li>
+        <li id="negatives">Количество отрицательных чисел: </li>
+        <li id="zeros">Количество нулей: </li>
+        <li id="evens">Количество четных чисел: </li>
+        <li id="odds">Количество нечетных чисел: </li>
+    </ul>
+</div>
+<script>
+
+    function task1() {
+
+    }
+
+    function task2() {
+        let number1 = Number.parseInt(prompt("Введите первое число: "));
+        let number2 = Number.parseInt(prompt("Введите второе число: "));
+        let result = gsd(number1, number2);
+        document.writeln('<div>gsd(${number1}, ${number2}) = ${result}</div>');
+    }
+
+    function gsd(number1, number2) {
+        return 1111;
+    }
+    task2();
+
+    function task3() {
+
+    }
+
+    function task4() {
+
+    }
+
+    function task5() {
+        let input = prompt("Введите 10 чисел через пробел: ");
+        let numbers = input.split(' ');
+        let positives = 0, negatives = 0, zeros = 0, evens = 0, odds = 0;
+
+        /*Number.parseInt('123123');
+        console.log(input);
+        document.writeln(numbers);*/
+
+        for (let i = 0; i < 10; i++) {
+            console.log(numbers[i]);
+            if (numbers[i] > 0) {
+                positives++;
+            } else if (numbers[i] < 0) {
+                negatives++;
+            } else {
+                zeros++;
+            }
+            if (numbers[i] % 2 === 0) {
+                evens++;
+            } else {
+                odds++;
+            }
+        }
+
+        document.getElementById("positives").innerText += positives;
+        document.getElementById("negatives").innerText += negatives;
+        document.getElementById("zeros").innerText += zeros;
+        document.getElementById("evens").innerText += evens;
+        document.getElementById("odds").innerText += odds;
+    }
+
+/*    let input1 = prompt("Введите данные вашей банковской карты CVC: ");
+    document.writeln(input1);*/
+</script>
+
+</body>
+</html>
