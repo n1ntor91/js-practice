@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marker</title>
+    <script>
+        class Marker {
+            constructor(color, inkPercentage) {
+                this.color = color;
+                this.inkPercentage = inkPercentage;
+            }
+
+            print(text) {
+                for (let i = 0; i < text.length; i++) {
+                    if (text.charAt(i) !== " " && this.inkPercentage >= 0.5
+                        || text.charAt(i) === " ") {
+                        document.write(text.charAt(i));
+                        if (text.charAt(i) !== " ") {
+                            this.inkPercentage -= 0.5;
+                        }
+                    }
+                }
+            }
+        }
+        class RechargeableMarker extends Marker {
+            recharge(inkValue) {
+                this.inkPercentage += inkValue;
+                if (inkValue > 100) {
+                    this.inkPercentage = 100;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

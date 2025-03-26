@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle</title>
+  <script>
+      'use strict'
+    class Circle {
+        #radius;
+        constructor(radius) {
+            this.#radius = radius;
+        }
+
+        get radius() {
+            return this.#radius;
+        }
+
+        set radius(radius) {
+            this.#radius = radius;
+        }
+
+        get diameter() {
+            return 2 * this.#radius;
+        }
+
+        area() {
+            return Math.PI * this.#radius ** 2;
+        }
+
+        circumference() {
+            return 2 * Math.PI * this.#radius;
+        }
+    }
+
+    const circle = new Circle(1);
+    console.log(circle.radius); // 1
+    circle.radius = 10;
+    console.log(circle.diameter); // 20
+    console.log(circle.area()); // 314,....
+    console.log(circle.circumference()); // 62,....
+  </script>
+</head>
+<body>
+
+</body>
+</html>

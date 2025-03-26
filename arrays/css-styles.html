@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+  <script>
+    let cssProperties = [
+            new CssProperty("color", "brown"),
+            new CssProperty("font_size", "20px")
+    ];
+
+    print(cssProperties, `lorem ipsum`);
+
+    function print(cssPropertiesList, text) {
+      let style = "";
+      cssPropertiesList.forEach((property) => style += `${property.name}: ${property.value};`)
+      cssPropertiesList
+              .map((property) => {return `${property.name}: ${property.value};`})
+              .join("");
+      document.write(`<p style="${style}">${text}</p>`);
+    }
+
+    function CssProperty(name, value) {
+      this.name = name;
+      this.value = value;
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

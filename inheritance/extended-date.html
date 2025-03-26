@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extended Date Class</title>
+    <script>
+        class ExtendedDate extends Date {
+            printDateAndMonth(){
+                document.write(`${this.getDate()} ${this.toLocaleString('en-us', { month: 'long' })}`);
+            }
+
+            isFutureOrPresent(){
+                const now = new Date();
+                if (this.getFullYear() < now.getFullYear()) {
+                    return false;
+                } else if (this.getFullYear() === now.getFullYear()) {
+                    if (this.getMonth() < now.getMonth()) {
+                        return false;
+                    } else if (this.getMonth() === now.getMonth()) {
+                        if (this.getDate() < now.getDate()) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            isLeapYear(){
+                if (this.getFullYear() % 4 !== 0) {
+                    return false;
+                }
+                if (this.getFullYear() % 100 === 0 && this.getFullYear() % 400 === 0) {
+                    return true;
+                }
+
+                return true;
+            }
+
+            next(){
+                return this.setDate(this.getDate() + 1);
+            }
+        }
+
+        const extendedDate = new ExtendedDate(2000, 0, 1);
+        extendedDate.printDateAndMonth();
+        document.write(`<br/>Is Present Or Future: ${extendedDate.isFutureOrPresent()}<br/>`);
+
+        const present = new ExtendedDate(2025, 2, 24);
+        present.printDateAndMonth();
+        document.write(`<br/>Is Present Or Future: ${present.isFutureOrPresent()}<br/>`);
+
+        const future = new ExtendedDate(2025, 2, 26);
+        future.printDateAndMonth();
+        document.write(`<br/>Is Present Or Future: ${future.isFutureOrPresent()}<br/>`);
+        future.next();
+        console.log(future);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
