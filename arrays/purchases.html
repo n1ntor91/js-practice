@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+    <script>
+        const purchase = new Purchase("water", 1, false);
+        let purchaseList = [purchase,
+            new Purchase("milk", 2, false),
+            new Purchase("apple", 3, true)
+        ];
+        print(sortPurchases(purchaseList));
+
+        for (const key in purchaseList) {
+            document.write(purchaseList[key] + "<br>");
+        }
+
+        add(new Purchase("milk", 1, false), purchaseList);
+        add(new Purchase("lemon", 1, false), purchaseList);
+        print(purchaseList);
+        buy("milk", purchaseList);
+        print(purchaseList);
+
+        function buy(productName, purchaseList) {
+            purchaseList.filter((element) => element.productName === productName)
+                .forEach((element) => element.isBought=true);
+        }
+
+        function add(purchase, purchaseList) {
+            let foundPurchase = purchaseList.find(function (element) {
+                if (element.productName === purchase.productName)
+                    return element;
+            });
+            if (foundPurchase === undefined) {
+                purchaseList.push(purchase)
+            } else {
+                foundPurchase.amount += purchase.amount;
+            }
+            foundPurchase ? foundPurchase.amount += purchase.amount : purchaseList.push(purchase);
+        }
+
+        function print(purchases) {
+            document.write("<ul>");
+            purchases.forEach((purchase) => document.write(`<li> ${purchase}</li>`));
+            document.write("<ul>");
+        }
+
+        function sortPurchases(purchases) {
+            return purchases.sort(function (p1, p2) {
+                if (p1.isBought === p2.isBought)
+                    return 0;
+                if (p1.isBought === false && p2.isBought === true) {
+                    return -1;
+                }
+                return 1;
+            });
+        }
+
+        function Purchase(productName, amount, isBought) {
+            this.productName = productName;
+            this.amount = amount;
+            this.isBought = isBought;
+            this.toString = function () {
+                return `Purchase [product name: ${this.productName}, amount: ${this.amount}, is bought: ${this.isBought}]`;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

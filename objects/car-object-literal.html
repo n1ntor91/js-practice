@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+  <script>
+    let car = {
+      manufacturer : "BMW",
+      model : "530i",
+      year : "2001",
+      averageSpeed : "150",
+      printInfo : function () {
+        document.writeln(`Car [manufacturer: ${this.manufacturer}, model: ${this.model}, year: ${this.year}, average speed: ${this.averageSpeed}]`);
+      },
+      calcTime : function (distance) {
+        if (this.calcTime % 4) {
+            return distance / this.averageSpeed + Math.floor((distance / this.averageSpeed) / 4)
+        } else {
+          return distance / this.averageSpeed + Math.floor((distance / this.averageSpeed) / 4);
+        }
+      }
+    };
+    car.printInfo();
+    console.log(car.calcTime(750));
+  </script>
+</head>
+<body>
+
+</body>
+</html>

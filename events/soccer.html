@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer Field</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            background-position: 100% 100%;
+            background-image: url("field.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+
+
+        }
+        .ball-img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: calc(50% - 50px);
+            left: calc(50% - 50px);
+            transition: top 1s, left 1s;
+         }
+    </style>
+    <script>
+        window.onload = () => {
+            document.body.addEventListener(
+                "click", (event) => {
+                    let ball = document.querySelector(".ball-img");
+                    let x = event.clientX - ball.width/2;
+                    let y = event.clientY - 50;
+
+                    let body = document.querySelector("body");
+                    if (y < 0) {
+                        ball.style.top = 0;
+                    } else if (y > body.offsetHeight - ball.height) {
+                        ball.style.top = body.offsetHeight - ball.height + "px";
+                    } else {
+                        ball.style.top = y + "px";
+                    }
+
+                    if (x < 0) {
+                        ball.style.left = 0;
+                    } else if (x > document.body.offsetWidth - ball.height) {
+                        ball.style.left = document.body.offsetWidth - ball.height + "px";
+                    } else {
+                        ball.style.left = x + "px";
+                    }
+                }
+            );
+        }
+    </script>
+</head>
+<body>
+    <img src="ball.png" class="ball-img"/>
+</body>
+</html>

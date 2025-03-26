@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML</title>
+    <script>
+        class HtmlElement {
+            constructor(name, isVoid, text) {
+                this.name = name;
+                this.isVoid = isVoid;
+                this.text = text;
+                this.attributes = [];
+                this.cssProperties = [];
+                this.nestingElements = [];
+            }
+
+            setAttribute(attribute) {
+                this.attributes.push(attribute);
+            }
+
+            setCssProperty(cssProperty) {
+                this.cssProperties.push(cssProperty);
+            }
+
+            pushNestingElement(newHtmlElement) {
+                this.nestingElements.push(newHtmlElement);
+            }
+
+            unshiftNestingElement(newHtmlElement) {
+                this.nestingElements.unshift(newHtmlElement);
+            }
+
+            getHtml() {
+                let html = "<" + this.name;
+
+                this.attributes.forEach(attribute => html += ` ${attribute.name}="${attribute.value}"`);
+
+                if (this.cssProperties.length !== 0) {
+                    html += 'style="';
+                    this.cssProperties.forEach(cssProperty => html += `${cssProperty.name}: ${cssProperty.value};`);
+                    html += '"';
+                }
+                if (this.isVoid) {
+                    html += "/>";
+                } else {
+                    html += ">";
+                    html += this.text;
+                    html += `</${this.name}>`;
+                }
+                return html;
+            }
+        }
+        const div = new HtmlElement("div", false, "Text content");
+        div.setAttribute(
+            {
+                name: "id",
+                value: "myDiv"
+            }
+        );
+        div.setCssProperty(
+            {
+                name: "color",
+                value: "brown"
+            }
+        );
+        div.setCssProperty(
+            {
+                name: "border",
+                value: "2px solid orange"
+            }
+        );
+        document.write(div.getHtml());
+    </script>
+</head>
+<body>
+
+<!--<div id="myDiv" style="color: brown; border: 2px solid orange">Text content</div>-->
+</body>
+</html>

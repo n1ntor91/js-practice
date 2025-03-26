@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+  <script>
+    class User {
+      _password = "";
+      #secret;
+
+      constructor(name) {
+        this.name = name;
+        this.#secret = "secret value";
+      }
+
+      sayHi() {
+        alert(this.name);
+      }
+
+      get password() {
+        return this._password;
+      }
+
+      set password(password) {
+        this._password = password;
+      }
+
+      get secret() {
+        return this.#secret;
+      }
+    }
+
+    const user = new User("user");
+    user._password = "1234";
+    console.log(user.password);
+    console.log(user.secret);
+
+    // класс - это функция
+    alert(typeof User); // function
+
+    alert(User === User.prototype.constructor);
+
+    alert(User.prototype.sayHi);
+
+    // в прототипе ровно 2 метода
+    alert(Object.getOwnPropertyNames(User.prototype));
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

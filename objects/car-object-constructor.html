@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+  <script>
+    function Car(manufacturer, model, year, averageSpeed) {
+      this.manufacturer = manufacturer;
+      this.model = model;
+      this.year = year;
+      this.averageSpeed = averageSpeed;
+      this.printInfo = function () {
+        document.writeln(`Car [manufacturer: ${this.manufacturer}, model: ${this.model}, year: ${this.year}, average speed: ${this.averageSpeed}]`);
+      };
+      this.calcTime = function (distance) {
+        return distance / averageSpeed + Math.floor((distance / this.averageSpeed)/4);
+      }
+    }
+    const car = new Car("BMW", "350i", "2001", "150")
+    car.printInfo();
+    console.log(car.calcTime(750));
+  </script>
+</head>
+<body>
+
+</body>
+</html>
